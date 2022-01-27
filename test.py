@@ -11,13 +11,13 @@ if(mydb):
 else:
     print('Nah')
 mycursor = mydb.cursor()
-mycursor.execute("SELECT * FROM flights")
+mycursor.execute("SELECT * FROM flight  ORDER BY CHARGES")
 myresult = mycursor.fetchall()
 
 l=[]
 for x in myresult:
     l.append(x)
-    
+  
 @app.route('/flights',methods=['POST'])
 def flights():
     fromCity= request.form['fromCity']
@@ -28,9 +28,20 @@ def flights():
     print(departureDate)
     return render_template('home.html',l=l,fromCity=fromCity,toCity=toCity)
 
+@app.route('/Page2',methods=['POST','GET'])
+def Page2():
+    if request.method=='POST':
+        name= request.form['name']
+        password= request.form['password']
+        print(name)
+        print(password)
+        return render_template('Page2.html')
+    else:
+        return render_template('Page1.html')
+
 @app.route('/',methods=['GET'])
 def home():
-    return render_template('Page2.html')
+    return render_template('Page1.html')
     
 
 
