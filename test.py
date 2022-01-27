@@ -1,0 +1,40 @@
+from flask import Flask, render_template, request
+import requests
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="nikhilnikhil",auth_plugin='mysql_native_password', database='testdb')
+
+app = Flask(__name__,template_folder='templates')
+
+if(mydb):
+    print("Connected to ")
+    print(mydb)
+else:
+    print('Nah')
+mycursor = mydb.cursor()
+mycursor.execute("SELECT * FROM flights")
+myresult = mycursor.fetchall()
+
+l=[]
+for x in myresult:
+    l.append(x)
+    
+@app.route('/flights',methods=['POST'])
+def flights():
+    fromCity= request.form['fromCity']
+    toCity= request.form['toCity']
+    departureDate= request.form['departureDate']
+    print(fromCity)
+    print(toCity)
+    print(departureDate)
+    return render_template('home.html',l=l,fromCity=fromCity,toCity=toCity)
+
+@app.route('/',methods=['GET'])
+def home():
+    return render_template('Page2.html')
+    
+
+
+
+
+if __name__=='__main__':
+    app.run(debug=True)
