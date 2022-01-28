@@ -21,7 +21,7 @@
                 <th>Time of Departure</th>
                 <th>Time of Arrival</th>
                 <th>Charges</th>
-                <th>Select</th>
+
             </thead>
             <tbody>
                 <tr>
@@ -30,7 +30,7 @@
                         {%for x in i%}
                         <td class="text-center">{{x}}</td>
                         {%endfor %}
-                        <td class="btn mx-auto">select</td>
+
 
                     </tr>{% endif %} {% endfor %}
 
@@ -40,8 +40,8 @@
         </table>
         <form action="{{ url_for('Page4') }}" method="POST">
             <input type="hidden" value="abc" name="abc" id="abc" class="form-control">
-            <div>
-                <input type="submit" value="abc" class="btn btn-outline-primary btn-lg mt-5 text-light fw-bold lead form-control">
+            <div class="d-flex justify-content-center">
+                <input type="submit" value="proceed to pay" class="btn btn-primary w-25 btn-lg mx-5 mt-5 text-light fw-bold lead form-control">
             </div>
         </form>
 
