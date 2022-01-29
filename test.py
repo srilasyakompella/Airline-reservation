@@ -33,6 +33,18 @@ def flights():
     fromCity= request.form['fromCity']
     toCity= request.form['toCity']
     departureDate= request.form['departureDate']
+    firstName=request.form['fname']
+    lastName=request.form['lname']
+    email=request.form['email']
+    phoneNo=request.form['phno']
+    age=request.form['age']
+    
+    print(email)
+    print(phoneNo)
+    print(age)
+    print(firstName)
+    print(lastName)
+    
     print(fromCity)
     print(toCity)
     print(departureDate)

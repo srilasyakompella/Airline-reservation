@@ -7,14 +7,6 @@
 </head>
 
 <body>
-    <ul>
-        <li>Home</li>
-        <li>Features</li>
-        <li>About</li>
-        <li>Contact</li>
-    </ul>
-    <h1>Fly High.</h1>
-    <h1>Above the Sky.</h1>
     <div class="container shadow">
         <form class="mx-auto m-5 p-5 border bg-light" action="{{ url_for('Page2') }}" method="POST">
             <h2>Sign In</h2>
@@ -32,31 +24,24 @@
                     <input type="password" name="password" value="password" id="password" class="form-control">
                 </div>
             </div>
-            <input type="submit" class="btn-lg btn btn-primary mt-3" value="submit"></a>
-            <p>Don't have an account?Sign Up</p>
+            <input type="submit" class="btn-lg btn btn-primary" value="submit"></a>
+            <p class="p1">Don't have an account?Sign Up</p>
         </form>
     </div>
     <style>
         body {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg0vIbLRWJT0yf1XM8RB4NnjC50Oz8RzLGZQ&usqp=CAU");
+            background-image: url("");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
         }
         
-        ul {
-            display: flex;
-            list-style-type: none;
-            justify-content: space-evenly;
-            background: rgba(118, 185, 202, 0.205);
-            color: black;
-            padding: 20px;
-            font-size: 25px;
-            margin-bottom: 150px;
-            margin-right: 0px;
-            margin-top: -10px;
-            margin-left: -10px;
-            margin-right: -10px;
+        .p1 {
+            margin-top: 10px;
+        }
+        
+        .btn {
+            margin-top: 25px;
         }
         
         a {
@@ -74,7 +59,7 @@
             background: rgba(253, 250, 250, 0.5);
             border-radius: 25px;
             margin-left: 175px;
-            margin-top: -200px;
+            margin-top: 100px;
             text-align: center;
         }
         
