@@ -38,16 +38,24 @@ def flights():
     email=request.form['email']
     phoneNo=request.form['phno']
     age=request.form['age']
+    passengers=int(request.form['passengers'])
     
+    # print(fromCity)
+    # print(toCity)
+    # print(departureDate)
+    print(passengers)
+    print(firstName)
+    print(lastName)
     print(email)
     print(phoneNo)
     print(age)
-    print(firstName)
-    print(lastName)
-    
-    print(fromCity)
-    print(toCity)
-    print(departureDate)
+    for i in range(1,passengers):
+        print(request.form['fname'+str(i)])
+        print(request.form['lname'+str(i)])
+        print(request.form['email'+str(i)])
+        print(request.form['phno'+str(i)])
+        print(request.form['age'+str(i)])
+   
     return render_template('home.html',l=l,fromCity=fromCity,toCity=toCity)
 
 @app.route('/Page2',methods=['POST','GET'])
