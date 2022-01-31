@@ -34,7 +34,7 @@
     <form action="{{ url_for('flights') }}" method="POST">
         <div style="margin-top:100px;" class="container mb-5">
 
-            <div class="card-group d-flex justify-content-center">
+            <div class="card-group d-flex justify-content-evenly">
                 <div class="row">
                     <div style=" width: 300px;" class="card col-sm-3 p-3 me-3">
                         <p class="txt">FROM</p>
@@ -48,11 +48,11 @@
                     <option style=" width: 200px;" value="LUCKNOW" class="form-control fl">&#xf5b0; LUCKNOW</option>
                     <option style=" width: 200px;" value="BENGALURU" class="form-control fl">&#xf5b0; BENGALURU</option>
                     <option style=" width: 200px;" value="CHENNAI" class="form-control fl">&#xf5b0; CHENNAI</option>
-                    <option style=" width: 200px;" value="BHOPAL" class="form-control fl">&#xf5b0; BHOPAL</option>
+                    <!-- <option style=" width: 200px;" value="BHOPAL" class="form-control fl">&#xf5b0; BHOPAL</option> -->
                     <option style=" width: 200px;" value="AHMEDABAD" class="form-control fl">&#xf5b0; AHMEDABAD</option>
                     <option style=" width: 200px;" value="AGRA" class="form-control fl">&#xf5b0; AGRA</option>
                     <option style=" width: 200px;" value="SRINAGAR" class="form-control fl">&#xf5b0; SRINAGAR</option>
-                    <option style=" width: 200px;" value="AURANGABAD" class="form-control fl">&#xf5b0; AURANGABAD</option>
+                    <!-- <option style=" width: 200px;" value="AURANGABAD" class="form-control fl">&#xf5b0; AURANGABAD</option> -->
                 </select>
 
                     </div>
@@ -75,14 +75,14 @@
                 </select>
 
                     </div>
-                    <div style=" width: 200px" class="card col-sm-3 p-3 me-3">
+                    <div style=" width: 250px" class="card col-sm-3 p-3 me-3">
                         <p class="txt">DEPARTURE</p>
                         <input type="date" class="form-control" name='departureDate'>
 
                     </div>
-                    <div class="card col-sm-3 p-3 me-3">
+                    <div style="width:250px;" class="card col-sm-3 p-3 me-3">
                         <p class="txt">Passengers</p>
-                        <input id="passengers" type="number" onchange=displayUserCards() class="form-control" name='passengers'>
+                        <input id="passengers" type="number" onchange=displayUserCards() class="form-control" name='passengers' placeholder="Enter no of passengers">
                     </div>
                 </div>
                 <div>
@@ -100,20 +100,42 @@
             <h1 class="text-secondary ms-3 pt-3 txt display-6">Please enter your details</h1>
             <div class="ms-5" style="padding-left: 10px; padding-right: 10px;">
 
-                <label for="fname" class="form-label me-3 mt-3">FirstName:</label><br>
-                <input type="fname" class="form-control me-4" style="width: 400px;" id="fname" placeholder="Enter First Name" name="fname">
-                <label for="lname" class="form-label me-3 mt-3">LastName:</label>
+                <!-- <label for="fname" class="form-label me-3 mt-3">FirstName:</label><br>
+                <input type="fname" class="form-control me-4" style="width: 400px;" id="fname" placeholder="Enter First Name" name="fname"> -->
+                <label for="fname" class="form-label me-3 mt-3">First Name</label>
+                <input type="fname" class="form-control" style="width: 400px;" id="fname" placeholder="Enter Last Name" name="fname">
+                <label for="lname" class="form-label me-3 mt-3">Last Name</label>
                 <input type="lname" class="form-control" style="width: 400px;" id="lname" placeholder="Enter Last Name" name="lname">
                 <div class="mb-3 mt-3">
-                    <label for="email">Email:</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" style="width: 400px;" id="email" placeholder="Enter email" name="email">
                 </div>
+
+                <!-- <div class='mb-3 d-flex'>
+                    <label class='txt'>Choose gender</label>
+                    <div class='form-check gen'>
+                        <input type="radio" id="female" name="gender" value="female" />
+                        <label for="gender" class="form-check-label txt">Female</label>
+                    </div>
+
+                    <div class='form-check gen'>
+                        <input type="radio" id="male" name="gender" value="male" />
+                        <label for="gender" class="form-check-label txt">Male</label>
+                    </div>
+
+                    <div class='form-check txt'>
+                        <input type="radio" id="other" name="gender" value="other" />
+                        <label htmlFor="other" className="form-check-label txt">Other</label>
+                    </div>
+
+                </div> -->
+                <!-- </div> -->
                 <div class="mb-3 mt-3">
-                    <label for="phno">Phone Number:</label>
+                    <label for="phno">Phone Number</label>
                     <input type="phno" class="form-control" style="width: 400px;" id="phno" placeholder="Phone number" name="phno">
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="age">Age:</label>
+                    <label for="age">Age</label>
                     <input type="age" class="form-control" style="width: 400px;" id="age" placeholder="Enter age" name="age">
                 </div>
                 <div class="mt-3 pb-5">
@@ -147,7 +169,6 @@
                 var itm = document.getElementById("Div");
                 var cln = itm.cloneNode(true);
                 document.getElementById("passengerCardsContainer").appendChild(cln);
-                console.log(document.getElementsByName("fname"))
                 document.getElementsByName("fname")[1].name = "fname" + (i + 1).toString();
                 document.getElementsByName("lname")[1].name = "lname" + (i + 1).toString();
                 document.getElementsByName("email")[1].name = "email" + (i + 1).toString();

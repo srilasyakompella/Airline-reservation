@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import requests
-# from flask_mysqldb import MySQL
-# import MySQLdb.cursors
+import random
 import mysql.connector
 mydb=mysql.connector.connect(host="localhost",user="root",passwd="nikhilnikhil",auth_plugin='mysql_native_password', database='testdb')
 
@@ -39,22 +38,37 @@ def flights():
     phoneNo=request.form['phno']
     age=request.form['age']
     passengers=int(request.form['passengers'])
-    
+    name=firstName+lastName
     # print(fromCity)
     # print(toCity)
     # print(departureDate)
-    print(passengers)
-    print(firstName)
-    print(lastName)
-    print(email)
-    print(phoneNo)
-    print(age)
+    # print(passengers)
+    # print(firstName)
+    # print(lastName)
+    # print(email)
+    # print(phoneNo)
+    # print(age)
+    li=[x for x in range(1,700)]
+    passengerId=random.choice(li)
+    mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s)',(passengerId,name,age,email,phoneNo) )
+    mydb.commit()
+    # mycursor.execute("SELECT * FROM passengerDetails where passengerId=passId ")
+    # result = mycursor.fetchall()
+    # x=[]
+    # for i in result:
+    #     x.append(i)
+    # print(x)
     for i in range(1,passengers):
-        print(request.form['fname'+str(i)])
-        print(request.form['lname'+str(i)])
-        print(request.form['email'+str(i)])
-        print(request.form['phno'+str(i)])
-        print(request.form['age'+str(i)])
+        passengerId=random.choice(li)
+        fn=(request.form['fname'+str(i)])
+        ln=(request.form['lname'+str(i)])
+        e=(request.form['email'+str(i)])
+        p=(request.form['phno'+str(i)])
+        a=(request.form['age'+str(i)])
+        s=fn+ln
+        mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s)',(passengerId+1,s,a,e,p))
+        mydb.commit()
+        
    
     return render_template('home.html',l=l,fromCity=fromCity,toCity=toCity)
 
