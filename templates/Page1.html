@@ -2,34 +2,47 @@
 
 <head>
     <title>Document</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="./airline.css"> -->
 </head>
 
-<body>
-    <div class="container shadow">
-        <form class="mx-auto m-5 p-5 border bg-light" action="{{ url_for('Page2') }}" method="POST">
-            <h2>Sign In</h2>
-            <p>Welcome back!Login with your credentials</p>
+<body class="text-white">
+    <div class="d-flex justify-content-center">
+        <form class="mx-auto m-5 p-5 border border-3 border-primary rounded-3" action="{{ url_for('Page2') }}" method="POST">
+            <h2 class=" t text-center">Sign In</h2>
+            <p class="fs-5 fw- t ">Welcome back! Login with your credentials</p>
             <hr>
-            <div class="user1 row">
+            <div class="user1 row my-2 mt-5 lead">
                 <label for="name" class="col-sm-3 col-form-label">Username</label>
                 <div class="user col-sm-9">
                     <input type="text" name="name" value="name" id="name" class="form-control">
                 </div>
             </div>
-            <div class="pass1 row mb-3">
+            <div class="pass1 row my-3 lead ">
                 <label for="password" class="col-form-label col-sm-3">Password</label>
                 <div class="pass col-sm-9">
                     <input type="password" name="password" value="password" id="password" class="form-control">
                 </div>
             </div>
-            <input type="submit" class="btn-lg btn btn-primary" value="submit"></a>
-            <p class="p1">Don't have an account?Sign Up</p>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="mx-5 my-3 t btn-lg btn btn-primary" value="Submit"></a>
+            </div>
+            <p class="lead text-center">Don't have an account? <a class="mx-2" href="https://www.google.co.in/webhp?tab=ww&ei=tWwaVK7hK4eGuASD2ICoDg&ved=0CAYQ1S4">SignUp</a>
+            </p>
         </form>
     </div>
     <style>
-        body {
+        .border {
+            background-color: #232931;
+        }
+        
+        .t {
+            color: #EEEEEE;
+        }
+        /* .btn{
+            background-color: #4ECCA3;
+        } */
+        /* body {
             background-image: url("");
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -104,11 +117,11 @@
         .pass1 {
             margin-top: 20px;
             font-size: 25px;
-        }
+        } */
     </style>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 
 </html>

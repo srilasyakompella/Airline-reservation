@@ -31,15 +31,17 @@
                 <th>Charges</th>
             </thead>
             <tbody>
+                {% for i in range(passengers)%}
                 <tr>
-                    <td class="text-center">{{pname}}</td>
-                    <td class="text-center">{{airname}}</td>
-                    <td class="text-center">{{fromc}}</td>
-                    <td class="text-center">{{toc}}</td>
-                    <td class="text-center">{{stime}}</td>
-                    <td class="text-center">{{etime}}</td>
-                    <td class="text-center">{{charge}}</td>
+                    <td class="text-center">{{passengersNames[i]}}</td>
+                    <td class="text-center">{{flightDetails[0][1]}}</td>
+                    <td class="text-center">{{flightDetails[0][2]}}</td>
+                    <td class="text-center">{{flightDetails[0][3]}}</td>
+                    <td class="text-center">{{flightDetails[0][5]}}</td>
+                    <td class="text-center">{{flightDetails[0][6]}}</td>
+                    <td class="text-center">{{flightDetails[0][7]}}</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

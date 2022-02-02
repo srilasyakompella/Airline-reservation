@@ -18,6 +18,7 @@ mycursor.execute("SELECT * FROM flight  ORDER BY CHARGES")
 myresult = mycursor.fetchall()
 pid=0
 sno=0
+bid=0
 passengers=0
 l=[]
 for x in myresult:
@@ -49,10 +50,13 @@ def flights():
     print(age)
     li=[x for x in range(1,700)]
     passengerId=random.choice(li)
+    bi=[x for x in range(1,99999)]
+    global bid
+    bid=random.choice(bi)
     global pid 
     pid=passengerId
     print('Passenger id in flights is :',pid)
-    mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s)',(pid,name,age,email,phoneNo) )
+    mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s,%s)',(pid,name,age,email,phoneNo,bid) )
     mydb.commit()
     # mycursor.execute("SELECT * FROM passengerDetails where passengerId=passId ")
     # result = mycursor.fetchall()
@@ -68,7 +72,7 @@ def flights():
         p=(request.form['phno'+str(i)])
         a=(request.form['age'+str(i)])
         s=fn+ln
-        mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s)',(passengerId,s,a,e,p))
+        mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s,%s)',(passengerId,s,a,e,p,bid))
         mydb.commit()
        
    
@@ -95,13 +99,12 @@ def Page5():
         mydb.commit()
         mycursor.execute('SELECT * FROM flight where s_no=%s',(sno,))
         x = mycursor.fetchall()
-        a=x[0]
-        mycursor.execute('SELECT * FROM passengerDetails where passengerId=%s',(pid,))
+        mycursor.execute('SELECT * FROM passengerDetails where bookingId=%s',(bid,))
         y = mycursor.fetchall()
-        b=y[0]
-        # for i in b:
-        #     print(i)
-        return render_template('Page5.html',pname=b[1],airname=a[1],fromc=a[2],toc=a[3],stime=a[5],etime=a[6],charge=a[7]*passengers)
+        data=[]
+        for i in range(len(y)):
+            data.append(y[i][1])
+        return render_template('Page5.html',flightDetails=x,passengersNames=data,passengers=passengers)
     else:
         return render_template('Page4.html')
 @app.route('/Page2',methods=['POST','GET'])
