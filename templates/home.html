@@ -26,7 +26,7 @@
             <tbody>
                 <tr>
                     {% for i in l%} {% if i[2]==fromCity and i[3]==toCity%}
-                    <tr id="value" class="m-auto">
+                    <tr id="value" class="m-auto dhinchak">
                         {%for x in i%}
                         <td class="text-center">{{x}}</td>
                         {%endfor %}
@@ -56,6 +56,10 @@
         
         table tr:not(:first-child):hover {
             background-color: #ddd;
+        }
+        
+        .dhinchak-background-color::selection {
+            background-color: #f1c40f;
         }
     </style>
     <script>

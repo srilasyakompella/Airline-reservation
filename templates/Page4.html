@@ -13,8 +13,8 @@
 
     <div class="container mt-3 p-3">
         <div class="shadow-sm p-3 mb-5 bg-white rounded">
-            <form>
-                <form>
+            <form action="{{ url_for('Page5') }}" method="POST">
+                <!-- <form>
 
                     <div class="row">
                         <div class="col-4">
@@ -37,24 +37,16 @@
 
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-                </form>
+                </form> -->
                 <div class="row">
-                    <label for="" class=p-3>Card Owner</label>
-                    <input type="text" name="" id="" class="form-control ml-3" placeholder="Card Owner Name">
+                    <label for="cardOwnerName" class="p-3 form-control">Card Owner</label>
+                    <input type="text" name="cardOwnerName" id="cardOwnerName" class="form-control ml-3" placeholder="Card Owner Name">
 
                 </div>
 
                 <div class="row">
-                    <label for="" class="p-3">Card Number</label>
-                    <input type="text" name="" id="" class="form-control ml-3" placeholder="Valid Card Number">
+                    <label for="cardNumber" class="p-3 form-control">Card Number</label>
+                    <input type="text" name="cardNumber" id="cardNumber" class="form-control ml-3" placeholder="Valid Card Number">
 
                 </div>
 
@@ -63,8 +55,8 @@
                     <div class="col-6">
 
 
-                        <label for="" class=" p-3">Expiration Date</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="MM  YY">
+                        <label for="expiryDate" class=" p-3">Expiration Date</label>
+                        <input type="text" name="expiryDate" id="expiryDate" class="form-control" placeholder="MM  YY">
 
                     </div>
 
@@ -73,12 +65,12 @@
 
 
 
-                        <label for="" class="m-3">CVV</label>
+                        <label for="cvv" class="m-3">CVV</label>
 
-                        <input type="text" name="" id="" class="form-control">
+                        <input type="text" name="cvv" id="cvv" class="form-control">
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm-3 m-3">Pay Now</button>
+                    <input type="submit" class="btn btn-primary btn-sm-3 m-3" value="Pay Now">
 
 
 
