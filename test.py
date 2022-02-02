@@ -18,6 +18,7 @@ mycursor.execute("SELECT * FROM flight  ORDER BY CHARGES")
 myresult = mycursor.fetchall()
 pid=0
 sno=0
+passengers=0
 l=[]
 for x in myresult:
     l.append(x)
@@ -34,6 +35,7 @@ def flights():
     email=request.form['email']
     phoneNo=request.form['phno']
     age=request.form['age']
+    global passengers
     passengers=int(request.form['passengers'])
     name=firstName+lastName
     print(fromCity)
@@ -91,7 +93,15 @@ def Page5():
         print(pid)
         mycursor.execute('insert into payment values(%s,%s,%s,%s,%s)',(pid,sno,cardOwnerName,cardNumber,paymentId) )
         mydb.commit()
-        return render_template('Page5.html')
+        mycursor.execute('SELECT * FROM flight where s_no=%s',(sno,))
+        x = mycursor.fetchall()
+        a=x[0]
+        mycursor.execute('SELECT * FROM passengerDetails where passengerId=%s',(pid,))
+        y = mycursor.fetchall()
+        b=y[0]
+        # for i in b:
+        #     print(i)
+        return render_template('Page5.html',pname=b[1],airname=a[1],fromc=a[2],toc=a[3],stime=a[5],etime=a[6],charge=a[7]*passengers)
     else:
         return render_template('Page4.html')
 @app.route('/Page2',methods=['POST','GET'])
