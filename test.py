@@ -6,14 +6,7 @@ mydb=mysql.connector.connect(host="localhost",user="root",passwd="nikhilnikhil",
 
 
 app = Flask(__name__,template_folder='templates')
-
-if(mydb):
-    print("Connected to ")
-    print(mydb)
-else:
-    print('Nah')
 mycursor = mydb.cursor()
-
 mycursor.execute("SELECT * FROM flight  ORDER BY CHARGES")
 myresult = mycursor.fetchall()
 pid=0
@@ -24,9 +17,6 @@ departureDate=0
 l=[]
 for x in myresult:
     l.append(x)
-
-
-  
 @app.route('/flights',methods=['POST'])
 def flights():
     fromCity= request.form['fromCity']
@@ -60,12 +50,6 @@ def flights():
     print('Passenger id in flights is :',pid)
     mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s,%s)',(pid,name,age,email,phoneNo,bid) )
     mydb.commit()
-    # mycursor.execute("SELECT * FROM passengerDetails where passengerId=passId ")
-    # result = mycursor.fetchall()
-    # x=[]
-    # for i in result:
-    #     x.append(i)
-    # print(x)
     for i in range(1,passengers):
         passengerId=random.choice(li)
         fn=(request.form['fname'+str(i)])
@@ -76,16 +60,17 @@ def flights():
         s=fn+ln
         mycursor.execute('insert into passengerDetails values(%s,%s,%s,%s,%s,%s)',(passengerId,s,a,e,p,bid))
         mydb.commit()
-       
-   
     return render_template('home.html',l=l,fromCity=fromCity,toCity=toCity)
 @app.route('/Page4',methods=['POST'])
 def Page4():
     id= request.form['abc']
     global sno
     sno= id
-    # print(id)
-    return render_template('Page4.html')
+    mycursor.execute('SELECT * FROM flight where flightId=%s',(sno,))
+    y = mycursor.fetchall()
+    totalFare=y[0][-1]
+    print(passengers)
+    return render_template('Page4.html',totalFare=totalFare*passengers)
 @app.route('/Page5',methods=['POST','GET'])
 def Page5():
     if request.method=='POST':
@@ -99,14 +84,15 @@ def Page5():
         print(pid)
         mycursor.execute('insert into payment values(%s,%s,%s,%s,%s)',(pid,sno,cardOwnerName,cardNumber,paymentId) )
         mydb.commit()
-        mycursor.execute('SELECT * FROM flight where s_no=%s',(sno,))
+        mycursor.execute('SELECT * FROM flight where flightId=%s',(sno,))
         x = mycursor.fetchall()
+        indcharge=x[0][-1]
         mycursor.execute('SELECT * FROM passengerDetails where bookingId=%s',(bid,))
         y = mycursor.fetchall()
         data=[]
         for i in range(len(y)):
             data.append(y[i][1])
-        return render_template('Page5.html',flightDetails=x,passengersNames=data,passengers=passengers,departureDate=departureDate)
+        return render_template('Page5.html',flightDetails=x,passengersNames=data,totalCharges=passengers*indcharge,passengers=passengers,departureDate=departureDate)
     else:
         return render_template('Page4.html')
 @app.route('/Page2',methods=['POST','GET'])
@@ -118,9 +104,7 @@ def Page2():
         password= request.form['password']
         print(name)
         print(password)
-        # mycursor.execute('insert into test values(%s,%s)',(name,password) )
-        # mydb.commit()
-        mycursor.execute("SELECT * FROM TRIAL")
+        mycursor.execute("SELECT * FROM userDetails")
         det=mycursor.fetchall();
         c=0
         for i in range(len(det)):
@@ -148,7 +132,7 @@ def Signin():
     pwd=request.form['password']
     print(name)
     print(pwd)
-    mycursor.execute("INSERT INTO TRIAL VALUES(%s,%s)",(name,pwd))
+    mycursor.execute("INSERT INTO userDetails VALUES(%s,%s)",(name,pwd))
     mydb.commit()
     if request.method=='POST':
         return render_template('Page1.html')

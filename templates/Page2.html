@@ -122,7 +122,6 @@
                     </div>
                 </div>
                 <div id="passengerCardsContainer">
-                    <!-- display:none -->
                 </div>
                 <div id="Div" class="mt-5 px-5">
                     <h1 class="text-center m-3 pt-4 txt display-6">Passenger Details</h1>
@@ -196,7 +195,9 @@
             }
 
             function displayUserCards() {
+                //console.log("innerHTML was : ", document.getElementById("passengerCardsContainer").innerHTML)
                 //document.getElementById("passengerCardsContainer").innerHTML = ""
+                //console.log("innerHTML is : ", document.getElementById("passengerCardsContainer").innerHTML)
                 //alert(document.getElementById("passengers").value)
                 //var itm = document.getElementById("Div");
                 for (let i = 0; i < document.getElementById("passengers").value - 1; i++) {
@@ -208,8 +209,6 @@
                     document.getElementsByName("email")[1].name = "email" + (i + 1).toString();
                     document.getElementsByName("phno")[1].name = "phno" + (i + 1).toString();
                     document.getElementsByName("age")[1].name = "age" + (i + 1).toString();
-
-
                     //document.getElementById("passengerCardsContainer").appendChild(cln);
                 }
 

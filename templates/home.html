@@ -9,26 +9,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body>
-    <div style="margin-top: 100px;">
-        <table id="table" class="table m-auto w-75">
-            <thead class="border text-center">
-                <th>S.No</th>
-                <th>Airline</th>
-                <th>Departure</th>
-                <th>Destination</th>
-                <th>Flight No</th>
-                <th>Time of Departure</th>
-                <th>Time of Arrival</th>
-                <th>Charges</th>
+<body style="background-color: #232931;">
+    <h1 class="text-center text-info display-5 mt-5">AVAILABLE FLIGHTS</h1>
+    <div style="margin-top: 3rem;">
+        <table id="table" style="background-color:#393E46" class="table m-auto w-75">
+            <thead class="border text-center text-white">
+                <th class="border fs-5">S.No</th>
+                <th class="border fs-5">Airline</th>
+                <th class="border fs-5">Departure</th>
+                <th class="border fs-5">Destination</th>
+                <th class="border fs-5">Flight No</th>
+                <th class="border fs-5">Time of Departure</th>
+                <th class="border fs-5">Time of Arrival</th>
+                <th class="border fs-5">Charges</th>
 
             </thead>
             <tbody>
                 <tr>
                     {% for i in l%} {% if i[2]==fromCity and i[3]==toCity%}
-                    <tr id="value" class="m-auto dhinchak">
+                    <tr id="value" class="m-auto">
                         {%for x in i%}
-                        <td class="text-center">{{x}}</td>
+                        <td class="text-center border text-white">{{x}}</td>
                         {%endfor %}
 
 
@@ -55,11 +56,7 @@
         }
         
         table tr:not(:first-child):hover {
-            background-color: #ddd;
-        }
-        
-        .dhinchak-background-color::selection {
-            background-color: #f1c40f;
+            background-color: rgb(29, 83, 94);
         }
     </style>
     <script>

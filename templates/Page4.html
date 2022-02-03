@@ -1,3 +1,68 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .ss {
+            background-color: #232931;
+        }
+        
+        .st {
+            background-color: #D3DEDC;
+            color: #d3d6d5;
+        }
+    </style>
+</head>
+
+<body class="st">
+    <div class="container ss w-50 shadow-sm p-3 rounded position-absolute top-50 start-50 translate-middle">
+        <h2 class="display-6 text-center">ENTER CARD DETAILS</h2>
+        <hr>
+        <form action="{{ url_for('Page5') }}" method="POST">
+            <div class="d-flex justify-content-evenly">
+                <div class="text-center lead mt-3 ms-3">
+                    <div class="col-sm-12">
+                        <label for="cardOwnerName" class="p-2">CARD OWNER</label>
+                        <input type="text" name="cardOwnerName" id="cardOwnerName" class="form-control" placeholder="Card Owner Name">
+                    </div>
+                    <div class="col-sm-12 mt-3">
+                        <label for="cardNumber" class="p-2">CARD NUMBER</label>
+                        <input type="text" name="cardNumber" id="cardNumber" class="form-control ml-3" placeholder="Valid Card Number">
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-8">
+                            <label for="expiryDate" class="p-2">EXPIRY DATE</label>
+                            <input type="text" name="expiryDate" id="expiryDate" class="form-control" placeholder="MM  YY">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="cvv" class="p-2">CVV</label>
+                            <input type="text" name="cvv" id="cvv" class="form-control">
+                        </div>
+                    </div>
+                    <div class="lead mt-3 text-warning">
+                        <p>Total Fare: {{totalFare}}</p>
+                    </div>
+                </div>
+                
+                <img src="https://www.nobroker.in/blog/wp-content/uploads/2018/10/shutterstock_295676969-1200x959.jpg" class="w-50 rounded float-end mt-4 mx-4" alt="cards">
+                
+            </div>
+            <div class="mt-3 d-flex justify-content-evenly">
+                <input type="submit" class="btn btn-primary w-50 m-3 btn-lg " value="Pay Now">
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+
+</html> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,79 +72,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .ss {
+            background-color: #232931;
+        }
+        
+        .st {
+            background-color: #D3DEDC;
+            color: #d3d6d5;
+        }
+    </style>
 </head>
 
-<body>
-
-    <div class="container mt-3 p-3">
-        <div class="shadow-sm p-3 mb-5 bg-white rounded">
-            <form action="{{ url_for('Page5') }}" method="POST">
-                <!-- <form>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-fill " viewBox="0 0 16 16">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
-          </svg> Credit Card
+<body class="st">
+    <div class="container ss w-50 shadow-sm p-3 rounded position-absolute top-50 start-50 translate-middle">
+        <h2 class="display-6 text-center">ENTER CARD DETAILS</h2>
+        <hr>
+        <form action="{{ url_for('Page5') }}" method="POST">
+            <div class="d-flex justify-content-evenly">
+                <div class=" lead mt-3 ms-3">
+                    <div class="col-sm-12 mt-3">
+                        <label for="cardOwnerName" class="p-2">CARD OWNER</label>
+                        <input type="text" name="cardOwnerName" id="cardOwnerName" class="form-control" placeholder="Card Owner Name">
+                    </div>
+                    <div class="col-sm-12 mt-3">
+                        <label for="cardNumber" class="p-2">CARD NUMBER</label>
+                        <input type="text" name="cardNumber" id="cardNumber" class="form-control ml-3" placeholder="Valid Card Number">
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-8">
+                            <label for="expiryDate" class="p-2">EXPIRY DATE</label>
+                            <input type="text" name="expiryDate" id="expiryDate" class="form-control" placeholder="MM  YY">
                         </div>
-
-                        <div class="col-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet-fill " viewBox="0 0 16 16">
-            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
-            <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
-          </svg> Wallet
-                        </div>
-
-                        <div class="col-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
-                <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
-              </svg> Paypal
-
+                        <div class="col-sm-4">
+                            <label for="cvv" class="p-2">CVV</label>
+                            <input type="text" name="cvv" id="cvv" class="form-control">
                         </div>
                     </div>
-                </form> -->
-                <div class="row">
-                    <label for="cardOwnerName" class="p-3 form-control">Card Owner</label>
-                    <input type="text" name="cardOwnerName" id="cardOwnerName" class="form-control ml-3" placeholder="Card Owner Name">
-
+                    <div class="lead mt-5 text-info text-center">
+                        <p>Total Fare: {{totalFare}}</p>
+                    </div>
                 </div>
-
-                <div class="row">
-                    <label for="cardNumber" class="p-3 form-control">Card Number</label>
-                    <input type="text" name="cardNumber" id="cardNumber" class="form-control ml-3" placeholder="Valid Card Number">
-
-                </div>
-
-
-                <div class="row">
-                    <div class="col-6">
-
-
-                        <label for="expiryDate" class=" p-3">Expiration Date</label>
-                        <input type="text" name="expiryDate" id="expiryDate" class="form-control" placeholder="MM  YY">
-
-                    </div>
-
-                    <div class="col-4">
-
-
-
-
-                        <label for="cvv" class="m-3">CVV</label>
-
-                        <input type="text" name="cvv" id="cvv" class="form-control">
-                    </div>
-
-                    <input type="submit" class="btn btn-primary btn-sm-3 m-3" value="Pay Now">
-
-
-
-            </form>
+                <!-- <div > -->
+                <img src="https://www.nobroker.in/blog/wp-content/uploads/2018/10/shutterstock_295676969-1200x959.jpg" class="w-50 rounded float-end mt-4 mx-4" alt="cards">
+                <!-- </div> -->
             </div>
-        </div>
+            <div class="mt-3 d-flex justify-content-evenly">
+                <input type="submit" class="btn btn-primary w-50 m-3 btn-lg " value="Pay Now">
+            </div>
+        </form>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 
 </html>

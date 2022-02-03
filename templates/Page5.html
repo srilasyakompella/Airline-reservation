@@ -7,45 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- <script src="https://kit.fontawesome.com/42e6ba4d34.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/42e6ba4d34.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body>
-    <p class="text-center display-6 mt-5">
+<body style="background-color: #232931;" class="text-white lead ">
+    <p class="text-center display-6 mt-5 mb-5">
         Your ticket has been booked successfully
     </p>
-    <i class="fa-solid fa-circle-check"></i>
-    <div class="d-flex justify-content-center">
-        <button onclick=showDiv() class="btn btn-primary">Show passsenger details</button>
+    <div class="d-flex justify-content-center" style="color: #4ECCA3;">
+        <i class="far fa-check-circle fa-5x"></i>
     </div>
-    <div id="Div" style="margin-top: 100px;display:none;">
-        <table id="table" class=" table m-auto w-75">
-            <thead class="border text-center">
-                <th>Passenger Name</th>
-                <th>Airline</th>
-                <th>Departure</th>
-                <th>Destination</th>
-                <th>Date of Travel</th>
-                <th>Time of Departure</th>
-                <th>Time of Arrival</th>
-                <th>Charges</th>
+    <div class="d-flex justify-content-center mt-5">
+        <button onclick=showDiv() class="btn btn-primary btn-lg ">Show passsenger details</button>
+    </div>
+    <div id="Div" style="margin-top: 60px;display:none;">
+        <table id="table" class="w-75 mx-auto table">
+            <thead class="border text-center text-white">
+                <th class="border  fs-4">Name</th>
+                <th class="border  fs-4">Airline</th>
+                <th class="border  fs-4">Departure</th>
+                <th class="border  fs-4">Destination</th>
+                <th class="border  fs-4">Travel Date</th>
+                <th class="border  fs-4">Departure Time</th>
+                <th class="border  fs-4">Arrival Time</th>
+                <th class="border  fs-4">Charges</th>
             </thead>
             <tbody>
                 {% for i in range(passengers)%}
-                <tr>
-                    <td class="text-center">{{passengersNames[i]}}</td>
-                    <td class="text-center">{{flightDetails[0][1]}}</td>
-                    <td class="text-center">{{flightDetails[0][2]}}</td>
-                    <td class="text-center">{{flightDetails[0][3]}}</td>
-                    <td class="text-center">{{departureDate}}</td>
-                    <td class="text-center">{{flightDetails[0][5]}}</td>
-                    <td class="text-center">{{flightDetails[0][6]}}</td>
-                    <td class="text-center">{{flightDetails[0][7]}}</td>
+                <tr class="text-white">
+                    <td class="text-center border">{{passengersNames[i]}}</td>
+                    <td class="text-center border">{{flightDetails[0][1]}}</td>
+                    <td class="text-center border">{{flightDetails[0][2]}}</td>
+                    <td class="text-center border">{{flightDetails[0][3]}}</td>
+                    <td class="text-center border">{{departureDate}}</td>
+                    <td class="text-center border">{{flightDetails[0][5]}}</td>
+                    <td class="text-center border">{{flightDetails[0][6]}}</td>
+                    <td class="text-center border">{{flightDetails[0][7]}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <p style="color:#4ECCA3;" class="lead display-6 text-center mt-3">Total Fare: {{totalCharges}}</p>
     </div>
 
     <script>
