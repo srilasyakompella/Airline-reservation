@@ -111,15 +111,46 @@ def Page5():
         return render_template('Page4.html')
 @app.route('/Page2',methods=['POST','GET'])
 def Page2():
+    name=""
+    password=""
     if request.method=='POST':
         name= request.form['name']
         password= request.form['password']
         print(name)
         print(password)
-        mycursor.execute('insert into test values(%s,%s)',(name,password) )
-        mydb.commit()
-        return render_template('Page2.html')
+        # mycursor.execute('insert into test values(%s,%s)',(name,password) )
+        # mydb.commit()
+        mycursor.execute("SELECT * FROM TRIAL")
+        det=mycursor.fetchall();
+        c=0
+        for i in range(len(det)):
+            if(det[i][0]==name and det[i][1]==password):
+                c=1
+                s=0
+                return render_template('Page2.html')
+            elif(det[i][0]==name and det[i][1]!=password):
+                c=1
+                s=1
+                print(s)
+                return render_template('Page1.html',s=s) 
+        if c==0:
+            return render_template('Page1.html',c=c)
     else:
+        return render_template('Page1.html',s=0)
+    
+@app.route('/Signup',methods=['POST'])
+def Signup():
+    if request.method=='POST':
+        return render_template('sinup.html')
+@app.route('/Signin',methods=['POST'])
+def Signin():
+    name=request.form['name']
+    pwd=request.form['password']
+    print(name)
+    print(pwd)
+    mycursor.execute("INSERT INTO TRIAL VALUES(%s,%s)",(name,pwd))
+    mydb.commit()
+    if request.method=='POST':
         return render_template('Page1.html')
 
 @app.route('/',methods=['GET'])

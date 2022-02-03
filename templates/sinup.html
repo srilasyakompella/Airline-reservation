@@ -18,13 +18,13 @@
                 </div>
                 <div class="col-8">
                     <div class="mx-auto bg-light">
-                        <form>
+                        <form action="{{ url_for('Signin') }}" method="POST">
                             <h2 class="mt-4 mx-5">Welcome ONBOARD</h2>
                             <p class="mx-4">-------------Sign-up with your mail---------------</p>
                             <div class="m-4 mx-5 px-5">
                                 <div class="input_field ">
                                     <p class="mb-2">Your name*</p>
-                                    <input type="text" name="name" placeholder=" Enter name" />
+                                    <input type="text" name="name" if="name" placeholder=" Enter name" />
                                 </div>
                             </div>
 
@@ -34,7 +34,7 @@
                             </div>
                             <div class="input_field m-4 mx-5 px-5">
                                 <p class="mb-2">Password*</p>
-                                <input type="password" name="password" placeholder="Enter password" required />
+                                <input type="password" name="password" id="password" placeholder="Enter password" required />
                             </div>
                             <div class="re mx-5 px-5">
                                 <input type="password" name="password" placeholder="Re-type Password*" required />
@@ -44,7 +44,6 @@
                                 <label for="cb1">Agree with terms and conditions</label>
                             </div>
                             <input class="mx-5 px-5" type="submit" class="btn btn-lg btn-info" value="SIGNUP">
-                            <p class="m-1 mx-4 mx-5 px-5">Already have an account?Sign in</p>
                         </form>
                     </div>
 
