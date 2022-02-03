@@ -1,17 +1,36 @@
 from flask import Flask, render_template, request
+from flask_mail import Mail
+from flask_mail import Mail, Message
 import requests
 import random
 import mysql.connector
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.message import EmailMessage
+from email import encoders
+import smtplib
+import os
+import json
 mydb=mysql.connector.connect(host="localhost",user="root",passwd="nikhilnikhil",auth_plugin='mysql_native_password', database='testdb')
 
 
 app = Flask(__name__,template_folder='templates')
+app.config['MAIL_SERVER']='http://smtp.gmail.com/'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'airline project'
+app.config['MAIL_PASSWORD'] = 'airline-proj@1'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+mail = Mail(app)
 mycursor = mydb.cursor()
 mycursor.execute("SELECT * FROM flight  ORDER BY CHARGES")
 myresult = mycursor.fetchall()
 pid=0
 sno=0
 bid=0
+email=""
 passengers=0
 departureDate=0
 l=[]
@@ -25,6 +44,7 @@ def flights():
     departureDate= request.form['departureDate']
     firstName=request.form['fname']
     lastName=request.form['lname']
+    global email
     email=request.form['email']
     phoneNo=request.form['phno']
     age=request.form['age']
@@ -40,7 +60,7 @@ def flights():
     print(email)
     print(phoneNo)
     print(age)
-    li=[x for x in range(1,700)]
+    li=[x for x in range(700,99999)]
     passengerId=random.choice(li)
     bi=[x for x in range(1,99999)]
     global bid
@@ -92,9 +112,37 @@ def Page5():
         data=[]
         for i in range(len(y)):
             data.append(y[i][1])
+        # server = smtplib.SMTP('smtp.gmail.com' , 587)
+        # server.starttls()
+        # server.login('airlineproj@gmail.com' , 'airline-proj@1')
+        # server.sendmail('airlineproj@gmail.com' , 'psaipreeti@gmail.com' , 'mail from me')
+        # print('mail sent')
         return render_template('Page5.html',flightDetails=x,passengersNames=data,totalCharges=passengers*indcharge,passengers=passengers,departureDate=departureDate)
     else:
         return render_template('Page4.html')
+@app.route('/Page6',methods=['POST','GET'])
+def Page6():
+    if request.method=='POST':
+        sender = 'airlineproj@gmail.com'
+        receiver = email
+        subject = "Ticket booked successfully"
+        message = f"""From: From <{sender}>
+        To: To <{receiver}>
+        MIME-Version: 1.0
+        Content-type: text/html
+        Subject: {subject}
+
+        Your ticket had been booked successfully!!!
+
+        """
+        server = smtplib.SMTP('smtp.gmail.com' , 587)
+
+        server.starttls()
+        server.login(sender , 'airline-proj@1')
+
+        server.sendmail(sender , receiver , message)
+        return render_template('Page6.html')
+        
 @app.route('/Page2',methods=['POST','GET'])
 def Page2():
     name=""
@@ -125,7 +173,7 @@ def Page2():
 @app.route('/Signup',methods=['POST'])
 def Signup():
     if request.method=='POST':
-        return render_template('sinup.html')
+        return render_template('signup.html')
 @app.route('/Signin',methods=['POST'])
 def Signin():
     name=request.form['name']

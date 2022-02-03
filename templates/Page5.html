@@ -19,7 +19,7 @@
         <i class="far fa-check-circle fa-5x"></i>
     </div>
     <div class="d-flex justify-content-center mt-5">
-        <button onclick=showDiv() class="btn btn-primary btn-lg ">Show passsenger details</button>
+        <button onclick=showDiv() class="btn btn-primary btn-lg ">Show Details</button>
     </div>
     <div id="Div" style="margin-top: 60px;display:none;">
         <table id="table" class="w-75 mx-auto table">
@@ -50,7 +50,12 @@
         </table>
         <p style="color:#4ECCA3;" class="lead display-6 text-center mt-3">Total Fare: {{totalCharges}}</p>
     </div>
-
+    <div class="d-flex justify-content-center">
+        <form action="{{ url_for('Page6') }}" method="POST">
+            <input type="submit" class="btn btn-primary btn-lg mt-3 px-4" value="Send Email">
+        </form>
+    </div>
+    `
     <script>
         function showDiv() {
             document.getElementById('Div').style.display = "block";
