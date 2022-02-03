@@ -20,6 +20,7 @@ pid=0
 sno=0
 bid=0
 passengers=0
+departureDate=0
 l=[]
 for x in myresult:
     l.append(x)
@@ -30,6 +31,7 @@ for x in myresult:
 def flights():
     fromCity= request.form['fromCity']
     toCity= request.form['toCity']
+    global departureDate
     departureDate= request.form['departureDate']
     firstName=request.form['fname']
     lastName=request.form['lname']
@@ -104,7 +106,7 @@ def Page5():
         data=[]
         for i in range(len(y)):
             data.append(y[i][1])
-        return render_template('Page5.html',flightDetails=x,passengersNames=data,passengers=passengers)
+        return render_template('Page5.html',flightDetails=x,passengersNames=data,passengers=passengers,departureDate=departureDate)
     else:
         return render_template('Page4.html')
 @app.route('/Page2',methods=['POST','GET'])
